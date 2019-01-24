@@ -1,5 +1,5 @@
 package com.qa.business.service;
 
-public class GameServiceImp {
+public class GameServiceImp implements GameService{
 
 }
