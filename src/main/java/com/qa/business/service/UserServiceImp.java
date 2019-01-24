@@ -1,29 +1,36 @@
 package com.qa.business.service;
 
+import javax.inject.Inject;
+
+import com.qa.persistence.repository.UserDBRepository;
+
 public class UserServiceImp implements UserService{
+	
+	@Inject
+	private UserDBRepository repo;
 
 	public String createUser(String user) {
-		// TODO Auto-generated method stub
+		repo.createUser(user);
 		return null;
 	}
 
 	public String getAllUsers() {
-		// TODO Auto-generated method stub
+		repo.getAllUsers();
 		return null;
 	}
 
 	public String getUserById(Long id) {
-		// TODO Auto-generated method stub
+		repo.getUserById(id);
 		return null;
 	}
 
 	public String updateUser(Long id, String user) {
-		// TODO Auto-generated method stub
+		repo.updateUser(id, user);
 		return null;
 	}
 
 	public String deleteUser(Long id) {
-		// TODO Auto-generated method stub
+		repo.deleteUser(id);
 		return null;
 	}
 
