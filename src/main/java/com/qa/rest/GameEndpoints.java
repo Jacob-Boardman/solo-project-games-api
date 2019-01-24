@@ -38,17 +38,17 @@ public class GameEndpoints {
 		return service.createGame(game);
 	}
 
-	@Path("/updateGame")
+	@Path("/updateGame/{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateGame(Long id, String game) {
+	public String updateGame(@PathParam("id") Long id, String game) {
 		return service.updateGame(id, game);
 	}
 
-	@Path("/deleteGame")
+	@Path("/deleteGame{id}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteGame(Long id) {
+	public String deleteGame(@PathParam("id") Long id) {
 		return service.deleteGame(id);
 	}
 
