@@ -1,29 +1,36 @@
 package com.qa.business.service;
 
+import javax.inject.Inject;
+
+import com.qa.persistence.repository.GameDBRepository;
+
 public class GameServiceImp implements GameService{
+	
+	@Inject
+	private GameDBRepository repo; 
 
 	public String createGame(String game) {
-		// TODO Auto-generated method stub
+		repo.createGame(game);
 		return null;
 	}
 
 	public String getAllGames() {
-		// TODO Auto-generated method stub
+		repo.getAllGames();
 		return null;
 	}
 
 	public String getGameById(Long id) {
-		// TODO Auto-generated method stub
+		repo.getGameById(id);
 		return null;
 	}
 
 	public String updateGame(Long id, String game) {
-		// TODO Auto-generated method stub
+		repo.updateGame(id, game);
 		return null;
 	}
 
 	public String deleteGame(Long id) {
-		// TODO Auto-generated method stub
+		repo.deleteGame(id);
 		return null;
 	}
 
