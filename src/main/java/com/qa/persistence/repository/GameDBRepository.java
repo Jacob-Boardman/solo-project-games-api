@@ -1,5 +1,5 @@
 package com.qa.persistence.repository;
 
-public class GameDBRepository {
+public class GameDBRepository implements GameRepository{
 
 }
