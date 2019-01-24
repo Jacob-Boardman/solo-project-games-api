@@ -1,10 +1,9 @@
 package com.qa.persistence.repository;
 
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+import static javax.transaction.Transactional.TxType.REQUIRED;
 
 import java.util.Collection;
-
-import static javax.transaction.Transactional.TxType.REQUIRED;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -29,19 +28,20 @@ public class GameDBRepository implements GameRepository {
 	@Transactional(REQUIRED)
 	public String createGame(String game) {
 		Game newGame = util.getObjectForJSON(game, Game.class);
-		manager.persist(newGame);;
+		manager.persist(newGame);
+		;
 		return "Message : Created a new Game";
 	}
 
 	public String getAllGames() {
 		Query query = manager.createQuery("SELECT g FROM Game g");
-		Collection<Game> games = (Collection<Game>)query.getResultList();
+		Collection<Game> games = (Collection<Game>) query.getResultList();
 		return util.getJSONForObject(games);
 	}
 
 	public String getGameById(Long id) {
 		Query query = manager.createQuery("SELECT g FROM Game g WHERE id = id");
-		Collection<Game> games = (Collection<Game>)query.getResultList();
+		Collection<Game> games = (Collection<Game>) query.getResultList();
 		return util.getJSONForObject(games);
 	}
 
@@ -49,8 +49,7 @@ public class GameDBRepository implements GameRepository {
 	public String updateGame(Long id, String game) {
 		Game foundGame = findGame(id);
 		Game newGame = util.getObjectForJSON(game, Game.class);
-		if(foundGame != null)
-		{
+		if (foundGame != null) {
 			manager.remove(foundGame);
 			manager.persist(newGame);
 			return "Message: Game has been updated";
@@ -61,8 +60,7 @@ public class GameDBRepository implements GameRepository {
 	@Transactional(REQUIRED)
 	public String deleteGame(Long id) {
 		Game foundGame = findGame(id);
-		if(foundGame != null)
-		{
+		if (foundGame != null) {
 			manager.remove(foundGame);
 			return "Message: Game has been deleted";
 		}
