@@ -41,8 +41,8 @@ public class UserDBRepository implements UserRepository {
 	
 	@Transactional(REQUIRED)
 	public String getUserById(Long id) {
-		Query query = manager.createQuery("SELECT u FROM User u WHERE id = id");
-		User user = (User) query.getResultList();
+		Query query = manager.createQuery("SELECT u FROM User u WHERE id = " + id);
+		User user = (User) query.getSingleResult();
 		return util.getJSONForObject(user);
 	}
 
