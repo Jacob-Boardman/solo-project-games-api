@@ -38,11 +38,12 @@ public class UserDBRepository implements UserRepository {
 		Collection<User> users = (Collection<User>) query.getResultList();
 		return util.getJSONForObject(users);
 	}
-
+	
+	@Transactional(REQUIRED)
 	public String getUserById(Long id) {
 		Query query = manager.createQuery("SELECT u FROM User u WHERE id = id");
-		Collection<User> users = (Collection<User>) query.getResultList();
-		return util.getJSONForObject(users);
+		User user = (User) query.getResultList();
+		return util.getJSONForObject(user);
 	}
 
 	@Transactional(REQUIRED)

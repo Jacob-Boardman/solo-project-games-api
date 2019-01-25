@@ -24,10 +24,10 @@ public class GameEndpoints {
 		return service.getAllGames();
 	}
 
-	@Path("/getGameById")
+	@Path("/getGameById/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String getGameById(Long id) {
+	public String getGameById(@PathParam("id") Long id) {
 		return service.getGameById(id);
 	}
 

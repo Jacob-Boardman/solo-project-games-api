@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-	
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
@@ -15,11 +15,11 @@ public class User {
 	private String secondName;
 	private Long age;
 	private String gameGenre;
-	
+
 	public User() {
-		//Has to be empty
+		// Has to be empty
 	}
-	
+
 	public User(String firstName, String secondName, Long age, String gameGenre) {
 		this.setFirstName(firstName);
 		this.setSecondName(secondName);
@@ -58,6 +58,9 @@ public class User {
 	public void setGameGenre(String gameGenre) {
 		this.gameGenre = gameGenre;
 	}
-	
-	
+
+	public Long getId() {
+		return id;
+	}
+
 }

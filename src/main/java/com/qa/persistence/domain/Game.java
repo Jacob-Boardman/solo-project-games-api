@@ -41,12 +41,16 @@ public class Game {
 		this.ageRating = ageRating;
 	}
 
-	public String getGamegenre() {
-		return gameGenre;
-	}
-
 	public void setGameGenre(String gameGenre) {
 		this.gameGenre = gameGenre;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getGameGenre() {
+		return gameGenre;
 	}
 
 }
