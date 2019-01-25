@@ -45,7 +45,7 @@ public class GameEndpoints {
 		return service.updateGame(id, game);
 	}
 
-	@Path("/deleteGame{id}")
+	@Path("/deleteGame/{id}")
 	@DELETE
 	@Produces({ "application/json" })
 	public String deleteGame(@PathParam("id") Long id) {
