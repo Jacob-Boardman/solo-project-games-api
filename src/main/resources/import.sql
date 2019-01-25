@@ -1,0 +1,12 @@
+INSERT INTO User (id, firstName, secondName, age, gameGenre) VALUES (1,'Jay','Boreman', 20, 'RPG');
+INSERT INTO User (id, firstName, secondName, age, gameGenre) VALUES (2,'Connar','Phillson', 17, 'Strategy');
+INSERT INTO User (id, firstName, secondName, age, gameGenre) VALUES (3,'Fred','Williams', 10, 'Racing');
+INSERT INTO User (id, firstName, secondName, age, gameGenre) VALUES (4,'Keith','Boardman', 35, 'Shooter');
+INSERT INTO User (id, firstName, secondName, age, gameGenre) VALUES (5,'Debbie','Boreman', 15, 'Multiplayer');
+INSERT INTO User (id, firstName, secondName, age, gameGenre) VALUES (6,'Declan','McGee', 23, 'Dating Sims');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (1, 'Witcher 3', 18, 'RPG');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (2, 'Hatoful Boyfriend', 3, 'Dating Sim');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (3, 'Forza 4', 12, 'Racing');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (4, 'Warframe', 15, 'Multiplayer');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (5, 'Call of Duty: Black Ops 4', 18, 'Shooter');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (6, 'Command and Conquer', 15, 'Strategy');

@@ -3,7 +3,9 @@ package com.qa.persistence.repository;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 
+import java.util.List;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -29,7 +31,6 @@ public class GameDBRepository implements GameRepository {
 	public String createGame(String game) {
 		Game newGame = util.getObjectForJSON(game, Game.class);
 		manager.persist(newGame);
-		;
 		return "Message : Created a new Game";
 	}
 
@@ -37,11 +38,13 @@ public class GameDBRepository implements GameRepository {
 		Query query = manager.createQuery("SELECT g FROM Game g");
 		Collection<Game> games = (Collection<Game>) query.getResultList();
 		return util.getJSONForObject(games);
+	
 	}
-
+	
+	@Transactional(REQUIRED)
 	public String getGameById(Long id) {
-		Query query = manager.createQuery("SELECT g FROM Game g WHERE id = id");
-		Collection<Game> games = (Collection<Game>) query.getResultList();
+		Query query = manager.createQuery("SELECT g FROM Game g WHERE g.id = " + id);
+		Game games = (Game) query.getSingleResult();
 		return util.getJSONForObject(games);
 	}
 

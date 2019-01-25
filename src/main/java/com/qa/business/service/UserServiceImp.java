@@ -10,28 +10,26 @@ public class UserServiceImp implements UserService{
 	private UserDBRepository repo;
 
 	public String createUser(String user) {
-		repo.createUser(user);
-		return null;
+		return repo.createUser(user);
 	}
 
 	public String getAllUsers() {
-		repo.getAllUsers();
-		return null;
+		return repo.getAllUsers();
 	}
 
 	public String getUserById(Long id) {
-		repo.getUserById(id);
-		return null;
+		return repo.getUserById(id);
+		
 	}
 
 	public String updateUser(Long id, String user) {
-		repo.updateUser(id, user);
-		return null;
+		return repo.updateUser(id, user);
+		
 	}
 
 	public String deleteUser(Long id) {
-		repo.deleteUser(id);
-		return null;
+		return repo.deleteUser(id);
+		
 	}
 
 }

@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import com.qa.persistence.domain.Game;
 import com.qa.persistence.domain.User;
 import com.qa.util.JSONUtil;
 
@@ -28,7 +27,7 @@ public class UserDBRepository implements UserRepository {
 
 	@Transactional(REQUIRED)
 	public String createUser(String user) {
-		Game newUser = util.getObjectForJSON(user, Game.class);
+		User newUser = util.getObjectForJSON(user, User.class);
 		manager.persist(newUser);
 		return "Message : Created a new User";
 	}
@@ -38,17 +37,18 @@ public class UserDBRepository implements UserRepository {
 		Collection<User> users = (Collection<User>) query.getResultList();
 		return util.getJSONForObject(users);
 	}
-
+	
+	@Transactional(REQUIRED)
 	public String getUserById(Long id) {
-		Query query = manager.createQuery("SELECT u FROM User u WHERE id = id");
-		Collection<User> users = (Collection<User>) query.getResultList();
-		return util.getJSONForObject(users);
+		Query query = manager.createQuery("SELECT u FROM User u WHERE id = " + id);
+		User user = (User) query.getSingleResult();
+		return util.getJSONForObject(user);
 	}
 
 	@Transactional(REQUIRED)
 	public String updateUser(Long id, String user) {
 		User foundUser = findUser(id);
-		Game newUser = util.getObjectForJSON(user, Game.class);
+		User newUser = util.getObjectForJSON(user, User.class);
 		if (foundUser != null) {
 			manager.remove(foundUser);
 			manager.persist(newUser);

@@ -10,28 +10,27 @@ public class GameServiceImp implements GameService{
 	private GameDBRepository repo; 
 
 	public String createGame(String game) {
-		repo.createGame(game);
-		return null;
+		return repo.createGame(game);
 	}
 
 	public String getAllGames() {
-		repo.getAllGames();
-		return null;
+		return repo.getAllGames();
+		 
 	}
 
 	public String getGameById(Long id) {
-		repo.getGameById(id);
-		return null;
+		return repo.getGameById(id);
+		
 	}
 
 	public String updateGame(Long id, String game) {
-		repo.updateGame(id, game);
-		return null;
+		return repo.updateGame(id, game);
+		
 	}
 
 	public String deleteGame(Long id) {
-		repo.deleteGame(id);
-		return null;
+		return repo.deleteGame(id);
+		
 	}
 
 }

@@ -24,10 +24,10 @@ public class UserEndpoints {
 		return service.getAllUsers();
 	}
 
-	@Path("/getUserById")
+	@Path("/getUserById/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String getUserById(Long id) {
+	public String getUserById(@PathParam("id") Long id) {
 		return service.getUserById(id);
 	}
 
