@@ -71,7 +71,7 @@ public class GameDBRepository implements GameRepository {
 	}
 
 	public String getGamesBygenre(String genre) {
-		Query query = manager.createQuery("SELECT g FROM Game g WHERE gameGenre = " + genre);
+		Query query = manager.createQuery("SELECT g FROM Game g WHERE g.gameGenre = " + genre);
 		Collection<Game> games = (Collection<Game>) query.getResultList();
 		return util.getJSONForObject(games);
 	}
