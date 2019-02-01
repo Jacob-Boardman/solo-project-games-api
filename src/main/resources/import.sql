@@ -10,3 +10,9 @@ INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (3, 'Forza 4', 12, 'Ra
 INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (4, 'Warframe', 15, 'Multiplayer');
 INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (5, 'Call of Duty: Black Ops 4', 18, 'Shooter');
 INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (6, 'Command and Conquer', 15, 'Strategy');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (7, 'Kingdom Hearts', 7, 'RPG');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (8, 'NekoPara', 18, 'Dating Sim');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (9, 'Moto GP 2018', 7, 'Racing');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (10, 'World of Warcraft', 12, 'Multiplayer');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (11, 'Overwatch', 7, 'Shooter');
+INSERT INTO Game (id, title, ageRating, gamegenre) VALUES (12, 'Dawn Of War Dark Crusade', 15, 'Strategy');
