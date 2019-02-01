@@ -11,5 +11,7 @@ public interface GameRepository {
 	String updateGame(Long id, String game);
 	
 	String deleteGame(Long id);
+	
+	String getGamesByGenre(String genre); 
 
 }

@@ -51,5 +51,12 @@ public class GameEndpoints {
 	public String deleteGame(@PathParam("id") Long id) {
 		return service.deleteGame(id);
 	}
+	
+	@Path("/getGameByGenre/{genre}")
+	@GET
+	@Produces({"application/json"})
+	public String getGameByGenre(@PathParam("genre") String genre) {
+		return service.getGamesByGenre(genre);
+	}
 
 }
