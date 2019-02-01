@@ -56,7 +56,7 @@ public class GameEndpoints {
 	@GET
 	@Produces({"application/json"})
 	public String getGameByGenre(@PathParam("genre") String genre) {
-		return service.getGamesBygenre(genre);
+		return service.getGamesByGenre(genre);
 	}
 
 }

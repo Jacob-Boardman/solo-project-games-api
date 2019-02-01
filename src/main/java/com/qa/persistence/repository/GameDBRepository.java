@@ -70,7 +70,7 @@ public class GameDBRepository implements GameRepository {
 		return "Message : No Game found";
 	}
 
-	public String getGamesBygenre(String genre) {
+	public String getGamesByGenre(String genre) {
 		Query query = manager.createQuery("SELECT g FROM Game g WHERE g.gameGenre = " + genre);
 		Collection<Game> games = (Collection<Game>) query.getResultList();
 		return util.getJSONForObject(games);

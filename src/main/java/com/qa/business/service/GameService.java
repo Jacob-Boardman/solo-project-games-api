@@ -11,5 +11,5 @@ public interface GameService {
 
 	String deleteGame(Long id);
 	
-	String getGamesBygenre(String genre);
+	String getGamesByGenre(String genre);
 }

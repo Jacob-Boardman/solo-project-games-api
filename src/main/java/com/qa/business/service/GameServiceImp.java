@@ -33,8 +33,8 @@ public class GameServiceImp implements GameService{
 		
 	}
 
-	public String getGamesBygenre(String genre) {
-		return repo.getGamesBygenre(genre);
+	public String getGamesByGenre(String genre) {
+		return repo.getGamesByGenre(genre);
 	}
 
 }
