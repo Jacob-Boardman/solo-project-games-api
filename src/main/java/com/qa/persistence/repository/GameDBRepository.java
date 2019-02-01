@@ -70,6 +70,12 @@ public class GameDBRepository implements GameRepository {
 		return "Message : No Game found";
 	}
 
+	public String getGamesBygenre(String genre) {
+		Query query = manager.createQuery("SELECT g FROM Game g WHERE gameGenre = " + genre);
+		Collection<Game> games = (Collection<Game>) query.getResultList();
+		return util.getJSONForObject(games);
+	}
+	
 	public Game findGame(Long id) {
 		return manager.find(Game.class, id);
 	}
@@ -81,5 +87,6 @@ public class GameDBRepository implements GameRepository {
 	public void setManager(EntityManager manager) {
 		this.manager = manager;
 	}
+
 
 }
