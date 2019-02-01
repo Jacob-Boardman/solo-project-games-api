@@ -10,4 +10,6 @@ public interface GameService {
 	String updateGame(Long id, String game);
 
 	String deleteGame(Long id);
+	
+	String getGamesBygenre(String genre);
 }
