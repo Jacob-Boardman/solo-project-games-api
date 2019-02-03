@@ -2,15 +2,28 @@ package com.qa.business.service;
 
 import javax.inject.Inject;
 
+import com.qa.persistence.domain.Game;
 import com.qa.persistence.repository.GameDBRepository;
+import com.qa.util.JSONUtil;
 
 public class GameServiceImp implements GameService{
 	
 	@Inject
-	private GameDBRepository repo; 
+	private GameDBRepository repo;
+	
+	@Inject
+	private JSONUtil util;
 
 	public String createGame(String game) {
-		return repo.createGame(game);
+		Game aGame = util.getObjectForJSON(game, Game.class);
+		
+		if(aGame.getAgeRating()>18)
+		{
+			return "Age Rating can't be greater than 18";
+		}
+		else {
+			return repo.createGame(game);
+		}
 	}
 
 	public String getAllGames() {
@@ -24,7 +37,15 @@ public class GameServiceImp implements GameService{
 	}
 
 	public String updateGame(Long id, String game) {
-		return repo.updateGame(id, game);
+		Game aGame = util.getObjectForJSON(game, Game.class);
+		
+		if(aGame.getAgeRating()>18)
+		{
+			return "Age Rating can't be greater than 18";
+		}
+		else {
+			return repo.updateGame(id, game);
+		}
 		
 	}
 
