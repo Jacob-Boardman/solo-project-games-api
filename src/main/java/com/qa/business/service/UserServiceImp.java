@@ -1,5 +1,8 @@
 package com.qa.business.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.qa.persistence.domain.User;
@@ -17,10 +20,9 @@ public class UserServiceImp implements UserService{
 	public String createUser(String user) {
 		User aUser = util.getObjectForJSON(user, User.class);
 		
-		if(aUser.getAge() > 120) {
-			return "Age can not be greater than 120";
-		}
-		else {
+		if(isValidUser(aUser).size() > 0) {
+			return isValidUser(aUser).toString();
+		}else {
 			return repo.createUser(user);
 		}
 	}
@@ -37,12 +39,12 @@ public class UserServiceImp implements UserService{
 	public String updateUser(Long id, String user) {
 		User aUser = util.getObjectForJSON(user, User.class);
 		
-		if(aUser.getAge() > 120) {
-			return "Age can't be that old";
-		}
-		else {
+		if(isValidUser(aUser).size() > 0) {
+			return isValidUser(aUser).toString();
+		}else {
 			return repo.updateUser(id, user);
 		}
+
 		
 	}
 
@@ -50,5 +52,35 @@ public class UserServiceImp implements UserService{
 		return repo.deleteUser(id);
 		
 	}
+	
+	public boolean isAlpha(String name) {
+	    return name.matches("[a-zA-Z]+");
+	}
+	
+	public List<String> isValidUser(User user) {
+		
+		List<String> errors = new ArrayList<String>();
+		
+		if(user.getAge() > 120 || user.getAge() < 3) {
+			errors.add("Age has to be between 3 and 120");
+		}
+		if(user.getFirstName().length() == 0) {
+			 errors.add("Please fill out First Name");
+		}
+		if(user.getSecondName().length() == 0){
+			errors.add("Please fill out Second Name");
+		}
+		if(!isAlpha(user.getFirstName())){
+			errors.add("First Name can only contain a-z and A-Z");
+		}
+		if(!isAlpha(user.getSecondName())){
+			errors.add("Second Name can only contain a-z and A-Z");
+		}	
+		
+		return errors;
+		
+	}
+	
+	
 
 }
