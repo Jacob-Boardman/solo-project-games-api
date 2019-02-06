@@ -1,5 +1,8 @@
 package com.qa.business.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.qa.persistence.domain.User;
@@ -16,11 +19,27 @@ public class UserServiceImp implements UserService{
 
 	public String createUser(String user) {
 		User aUser = util.getObjectForJSON(user, User.class);
+		List<String> errors = new ArrayList<String>();
 		
 		if(aUser.getAge() > 120) {
-			return "Age can not be greater than 120";
+			errors.add("Age can not be greater than 120");
 		}
-		else {
+		if(aUser.getFirstName().length() == 0) {
+			 errors.add("Please fill out First Name");
+		}
+		if(aUser.getSecondName().length() == 0){
+			errors.add("Please fill out Second Name");
+		}
+		if(!isAlpha(aUser.getFirstName())){
+			errors.add("First Name can only contain a-z and A-Z");
+		}
+		if(!isAlpha(aUser.getSecondName())){
+			errors.add("Second Name can only contain a-z and A-Z");
+		}	
+		
+		if(errors.size() > 0){
+			return errors.toString();
+		}else {			
 			return repo.createUser(user);
 		}
 	}
@@ -36,12 +55,28 @@ public class UserServiceImp implements UserService{
 
 	public String updateUser(Long id, String user) {
 		User aUser = util.getObjectForJSON(user, User.class);
+		List<String> errors = new ArrayList<String>();
 		
 		if(aUser.getAge() > 120) {
-			return "Age can't be that old";
+			errors.add("Age can not be greater than 120");
 		}
-		else {
-			return repo.updateUser(id, user);
+		if(aUser.getFirstName().length() == 0) {
+			 errors.add("Please fill out First Name");
+		}
+		if(aUser.getSecondName().length() == 0){
+			errors.add("Please fill out Second Name");
+		}
+		if(!isAlpha(aUser.getFirstName())){
+			errors.add("First Name can only contain a-z and A-Z");
+		}
+		if(!isAlpha(aUser.getSecondName())){
+			errors.add("Second Name can only contain a-z and A-Z");
+		}	
+		
+		if(errors.size() > 0){
+			return errors.toString();
+		}else {			
+			return repo.createUser(user);
 		}
 		
 	}
@@ -49,6 +84,10 @@ public class UserServiceImp implements UserService{
 	public String deleteUser(Long id) {
 		return repo.deleteUser(id);
 		
+	}
+	
+	public boolean isAlpha(String name) {
+	    return name.matches("[a-zA-Z]+");
 	}
 
 }
