@@ -18,7 +18,7 @@ public class UserServiceImp implements UserService{
 		User aUser = util.getObjectForJSON(user, User.class);
 		
 		if(aUser.getAge() > 120) {
-			return "Age can't be that old";
+			return "Age can not be greater than 120";
 		}
 		else {
 			return repo.createUser(user);
