@@ -1,5 +1,8 @@
 package com.qa.business.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.qa.persistence.domain.Game;
@@ -17,9 +20,9 @@ public class GameServiceImp implements GameService{
 	public String createGame(String game) {
 		Game aGame = util.getObjectForJSON(game, Game.class);
 		
-		if(aGame.getAgeRating()>18)
+		if(isValidGame(aGame).size() > 0)
 		{
-			return "Age Rating can't be greater than 18";
+			return isValidGame(aGame).toString();
 		}
 		else {
 			return repo.createGame(game);
@@ -39,9 +42,9 @@ public class GameServiceImp implements GameService{
 	public String updateGame(Long id, String game) {
 		Game aGame = util.getObjectForJSON(game, Game.class);
 		
-		if(aGame.getAgeRating()>18)
+		if(isValidGame(aGame).size() > 0)
 		{
-			return "Age Rating can't be greater than 18";
+			return isValidGame(aGame).toString();
 		}
 		else {
 			return repo.updateGame(id, game);
@@ -56,6 +59,19 @@ public class GameServiceImp implements GameService{
 
 	public String getGamesByGenre(String genre) {
 		return repo.getGamesByGenre(genre);
+	}
+	
+	public List<String> isValidGame(Game game){
+		List<String> errors = new ArrayList<String>();
+		
+		if(game.getAgeRating() < 3 || game.getAgeRating() > 18) {
+			errors.add("Games age rating can only be ages 3-18");
+		}
+		if(game.getTitle().length() < 2 || game.getTitle().length() > 100) {
+			errors.add("Title can only be between 2-100 characters");
+		}
+		
+		return errors;
 	}
 
 }
