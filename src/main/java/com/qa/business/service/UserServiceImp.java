@@ -20,7 +20,7 @@ public class UserServiceImp implements UserService{
 	public String createUser(String user) {
 		User aUser = util.getObjectForJSON(user, User.class);
 		
-		if(isValidUser(aUser).size() > 0) {
+		if(!isValidUser(aUser).isEmpty()) {
 			return isValidUser(aUser).toString();
 		}else {
 			return repo.createUser(user);
@@ -39,7 +39,7 @@ public class UserServiceImp implements UserService{
 	public String updateUser(Long id, String user) {
 		User aUser = util.getObjectForJSON(user, User.class);
 		
-		if(isValidUser(aUser).size() > 0) {
+		if(!isValidUser(aUser).isEmpty()) {
 			return isValidUser(aUser).toString();
 		}else {
 			return repo.updateUser(id, user);
@@ -59,7 +59,7 @@ public class UserServiceImp implements UserService{
 	
 	public List<String> isValidUser(User user) {
 		
-		List<String> errors = new ArrayList<String>();
+		List<String> errors = new ArrayList<>();
 		
 		if(user.getAge() > 120 || user.getAge() < 3) {
 			errors.add("Age has to be between 3 and 120");

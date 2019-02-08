@@ -20,7 +20,7 @@ public class GameServiceImp implements GameService{
 	public String createGame(String game) {
 		Game aGame = util.getObjectForJSON(game, Game.class);
 		
-		if(isValidGame(aGame).size() > 0)
+		if(!isValidGame(aGame).isEmpty())
 		{
 			return isValidGame(aGame).toString();
 		}
@@ -42,7 +42,7 @@ public class GameServiceImp implements GameService{
 	public String updateGame(Long id, String game) {
 		Game aGame = util.getObjectForJSON(game, Game.class);
 		
-		if(isValidGame(aGame).size() > 0)
+		if(!isValidGame(aGame).isEmpty())
 		{
 			return isValidGame(aGame).toString();
 		}
@@ -62,7 +62,7 @@ public class GameServiceImp implements GameService{
 	}
 	
 	public List<String> isValidGame(Game game){
-		List<String> errors = new ArrayList<String>();
+		List<String> errors = new ArrayList<>();
 		
 		if(game.getAgeRating() < 3 || game.getAgeRating() > 18) {
 			errors.add("Games age rating can only be ages 3-18");
